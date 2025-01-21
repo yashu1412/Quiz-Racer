@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Be+Vietnam+Pro:wght@200&family=Coiny&family=Dancing+Script:wght@400..700&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inconsolata:wght@300;900&display=swap');
+
+/* Game Intro */
+body {
+  font-family: 'Anton SC', sans-serif;
+}
+
+.anton-sc-regular {
+  font-family: 'Anton SC', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36.13px;
+  text-align: center;
+}
+
+.coiny-regular {
+  font-family: "Coiny", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* Define Akshar font */
+.font-akshar {
+  font-family: 'Akshar', serif;
+  font-optical-sizing: auto;
+}
+
+.bg-common {
+  @apply bg-common-bg bg-cover bg-center h-screen w-full;
+}
+
+/* Bubble appearance animation */
+@keyframes bubbleAppear {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Text fade-in animation */
+@keyframes textAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin-y {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+/* GamePage */
+
+.animate-spin-y {
+  animation: spin-y 3s linear infinite;
+}
+
+.hint-glow {
+  box-shadow: 0 0 10px 2px rgba(238, 227, 10, 0.8);
+}
+
+button {
+  transition: all 0.3s ease;
+}
+.scale-effect {
+  transform: scale(1.2);
+}
+@keyframes smoothSlideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.custom-slide-in {
+  animation: smoothSlideInLeft 1s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+@keyframes slideInLeftToRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.custom-slide-in {
+  animation: slideInLeftToRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes moveTrue {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes moveFalse {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
