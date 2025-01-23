@@ -1,46 +1,75 @@
-# Getting Started with Create React App
+# Racer Quiz Game  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Racer Quiz Game is an engaging and interactive web-based quiz application where players race cars by answering true/false questions. The game provides instant feedback on each answer, tracks scores, and determines a winner based on correct and incorrect answers.  
 
-## Available Scripts
+## Features  
 
-In the project directory, you can run:
+- **Interactive Gameplay**: Players answer quiz questions to race their cars to the finish line.  
+- **Dynamic Feedback**: Instant feedback on answers, with visual cues for correct and incorrect responses.  
+- **Score Tracking**: Keeps track of the player's correct and wrong answers, updating the score in real-time.  
+- **Smooth Animations**: Cars animate forward or backward based on the player's performance.  
+- **Multiple Questions**: A series of true/false questions challenge the player.  
+- **Game Over Screen**: Displays final scores and statistics at the end of the game.  
 
-### `npm start`
+## Getting Started  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run the project, ensure you have the following installed:  
+- [Node.js](https://nodejs.org/) (LTS version recommended)  
+- npm (comes with Node.js) or yarn  
 
-### `npm test`
+### Installation  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/yourusername/racer-quiz-game.git  
+   ```  
+2. Navigate to the project directory:  
+   ```bash  
+   cd racer-quiz-game  
+   ```  
+3. Install dependencies:  
+   ```bash  
+   npm install  
+   ```  
 
-### `npm run build`
+### Running the Game  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Start the development server:  
+   ```bash  
+   npm start  
+   ```  
+2. Open [http://localhost:3000](http://localhost:3000) in your browser to play the game.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Scripts  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm start`  
+Runs the game in development mode. The app will automatically reload if you edit the code.  
 
-### `npm run eject`
+### `npm test`  
+Launches the test runner in interactive watch mode.  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `npm run build`  
+Builds the app for production, optimizing it for the best performance.  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm run eject`  
+Ejects the default Create React App setup, allowing full control over configuration. **This action is irreversible.**  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Technologies Used  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Frontend**: React, TypeScript  
+- **State Management**: Redux Toolkit  
+- **Styling**: Tailwind CSS  
+- **Animations**: CSS transitions  
 
-## Learn More
+## How to Play  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Start the game by clicking "Start Quiz."  
+2. Answer true/false questions as they appear.  
+3. Watch the cars race based on your performance:  
+   - **Correct Answer**: Your car moves forward.  
+   - **Wrong Answer**: The opponent's car moves forward.  
+4. Click "Next" to proceed to the next question.  
+5. The game ends after all questions are answered, and the final scores are displayed.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
