@@ -14,7 +14,7 @@ interface Question {
 interface AnswerButtonsProps {
   currentQuestion: Question;
   handleAnswer: (isCorrect: boolean) => void;
-  hideAnswerButtons: boolean; // Control visibility
+  hideAnswerButtons: boolean; 
 }
 
 const AnswerButtons: React.FC<AnswerButtonsProps> = ({
@@ -26,6 +26,9 @@ const AnswerButtons: React.FC<AnswerButtonsProps> = ({
   const { correctAnswers, wrongAnswers } = useSelector(
     (state: RootState) => state.game
   );
+  console.log("Correct Answers:", correctAnswers);
+console.log("Wrong Answers:", wrongAnswers);
+
 
   const handleButtonClick = (selectedValue: boolean) => {
     const isCorrect = selectedValue === currentQuestion.answer;
@@ -45,13 +48,13 @@ const AnswerButtons: React.FC<AnswerButtonsProps> = ({
     <div className="flex justify-center gap-4 mt-4">
       <button
         onClick={() => handleButtonClick(true)}
-        className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-700"
+        className="bg-[#34841E] text-2xl font-akshar font-medium text-white px-9 py-1 rounded-full shadow-lg shadow-gray-800 animate-slide-in-left"
       >
         True
       </button>
       <button
         onClick={() => handleButtonClick(false)}
-        className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-700"
+        className="bg-[#FF0900] text-2xl font-akshar font-medium text-white px-9 py-1 rounded-full shadow-lg shadow-gray-800 animate-slide-in-right"
       >
         False
       </button>

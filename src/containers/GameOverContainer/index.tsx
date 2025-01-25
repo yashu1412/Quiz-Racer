@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import GameOverView from "../../view/GameOverView";
 
+interface RootState {
+  game: {
+    score: number;
+    correctAnswers: number;
+    wrongAnswers: number;
+  }
+}
+
 const GameOverContainer: React.FC = () => {
   const [isScoreVisible, setIsScoreVisible] = useState(false);
 
-
-  const finalScore = useSelector((state: any) => state.game.score);
-  const correctAnswers = useSelector((state: any) => state.game.correctAnswers);
-  const wrongAnswers = useSelector((state: any) => state.game.wrongAnswers);
+  const finalScore = useSelector((state: RootState) => state.game.score);
+  const correctAnswers = useSelector((state: RootState) => state.game.correctAnswers);
+  const wrongAnswers = useSelector((state: RootState) => state.game.wrongAnswers);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,13 +24,6 @@ const GameOverContainer: React.FC = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
-
-  useEffect(() => {
-    console.log("Game Over! Total Score:", finalScore);
-    console.log("Correct Answers:", correctAnswers);
-    console.log("Wrong Answers:", wrongAnswers);
-  }, [finalScore, correctAnswers, wrongAnswers]);
 
   return (
     <GameOverView

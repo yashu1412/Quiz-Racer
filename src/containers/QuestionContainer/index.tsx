@@ -12,6 +12,10 @@ export const useGameLogic = () => {
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false);
   const [hideAnswerButtons, setHideAnswerButtons] = useState(false);
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
+  const [isAnswerWrong, setIsAnswerWrong] = useState<boolean | null>(null);
+  const [feedbackText, setFeedbackText] = useState<string | null>(null);
+  const [showBubble, setShowBubble] = useState(false);
 
   const navigate = useNavigate();
 
@@ -49,44 +53,62 @@ export const useGameLogic = () => {
     setShowQuestion(false);
     setHideAnswerButtons(false);
     setShowNextButton(false);
+    setIsAnswerCorrect(null);
+    setFeedbackText(null);
+    setShowBubble(false);
   };
 
   const handleAnswer = (isCorrect: boolean) => {
     setHideAnswerButtons(true);
-
+    setIsAnswerCorrect(isCorrect);
+    setFeedbackText(isCorrect ? "Correct" : "Wrong");
+    setShowBubble(true);
+  
     if (isCorrect) {
+      // Correct answer logic
       setScore((prev) => prev + 50);
       setCorrectAnswers((prev) => prev + 1);
       setCar1Position("translateX(450%)");
-      // setMessage("Correct! Green car moves forward...");
     } else {
+      // Wrong answer logic
       setScore((prev) => Math.max(0, prev - 10));
       setWrongAnswers((prev) => prev + 1);
       setCar2Position("translateX(450%)");
-      // setMessage("Wrong! Red car moves forward...");
     }
-
+  
+    // Bubble and next button logic
     setTimeout(() => {
-      setShowNextButton(true);
-    }, 2500); // Show "Next" button after car animation
+      setShowBubble(false); 
+      setShowNextButton(true); 
+    }, 3000); 
   };
-
+  
   const handleNextQuestion = () => {
     if (currentQuestionIndex + 1 >= questionsData.length) {
       navigate("/gameover", {
-        state: { score, correctAnswers, wrongAnswers },
+        state: { 
+          score, 
+          correctAnswers, 
+          wrongAnswers,
+          isScoreVisible: true 
+        }
       });
     } else {
       setCurrentQuestionIndex((prev) => prev + 1);
+      resetGame();
     }
   };
 
   return {
     car1Position,
     car2Position,
+    isAnswerCorrect,
+    isAnswerWrong, 
+    showBubble,
     showQuestion,
-    message,
+    feedbackText,
     score,
+    message,
     currentQuestionIndex,
     questionsData,
     hideAnswerButtons,
@@ -94,4 +116,5 @@ export const useGameLogic = () => {
     handleAnswer,
     handleNextQuestion,
   };
+  
 };
