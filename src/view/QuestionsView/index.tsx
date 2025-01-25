@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import "animate.css";
-import checkeredImage from "../../assets/racing.jpg";
-import flagIcon from '../../assets/flag.png';
+import checkeredImage from "../../assets/Racing-bg.png";
 // Import custom components
 import AnswerButtons from "../../components/custom/Game/AnswerButton";
 import PowerUpControls from "../../components/base/PowerUps/index";
@@ -16,7 +15,6 @@ import { useGameLogic } from "../../containers/QuestionContainer";
 const GameView: React.FC = () => {
   const navigate = useNavigate();
 
-  // Custom hook for game logic
   const {
     car1Position,
     car2Position,
@@ -29,6 +27,9 @@ const GameView: React.FC = () => {
     showNextButton,
     handleAnswer,
     handleNextQuestion,
+    feedbackText,
+    showBubble,
+    isAnswerCorrect,
   } = useGameLogic();
 
   const currentQuestion = questionsData[currentQuestionIndex] || {
@@ -36,7 +37,7 @@ const GameView: React.FC = () => {
     answer: false,
   };
 
-  // Navigate to the game over screen if all questions are completed
+
   useEffect(() => {
     if (currentQuestionIndex >= questionsData.length) {
       navigate("/gameover");
@@ -44,72 +45,38 @@ const GameView: React.FC = () => {
   }, [currentQuestionIndex, questionsData.length, navigate]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen bg-common overflow-hidden ">
-            <div className="text-center">
-              <img src={flagIcon} alt="Flags" className="mx-auto w-40 " />
-            </div>
-      {/* Header Section */}
-      <div
-        className="relative w-full h-[180px] mt-[93px] flex flex-col items-center justify-center top-[-80px]"
-        style={{
-          backgroundImage: `url(${checkeredImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <svg
-          className="absolute top-0 left-0 w-full h-[139px]"
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,50 C150,100 350,0 500,50 L500,0 L0,0 Z"
-            style={{ stroke: "none", fill: "#D4F4FF" }}
-          />
-        </svg>
-        <span className="relative text-white text-3xl font-bold z-10 coiny-regular">
-          Race
-        </span>
-        <svg
-          className="absolute bottom-0 left-0 w-[100%] h-[139px] rotate-180"
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,50 C150,100 350,0 500,50 L500,0 L0,0 Z"
-            style={{ stroke: "none", fill: "#B9E9F5" }}
-          />
-        </svg>
+    <div className="relative flex flex-col items-center justify-center h-screen w-full bg-common overflow-hidden">
+      <div className='w-[101%] translate-y-[-50px]'>
+        <img src={checkeredImage} alt="Racing background" loading="lazy" />
       </div>
 
       {/* Question Section */}
+      <div className="translate-y-[-150px]">
       <Question
         showQuestion={showQuestion}
         question={currentQuestion.question}
+        feedbackText={feedbackText}
       />
 
       {/* Answer Buttons */}
       <AnswerButtons
-            currentQuestion={questionsData[currentQuestionIndex]}
-            handleAnswer={handleAnswer}
-            hideAnswerButtons={hideAnswerButtons}
-          />
-
+        currentQuestion={questionsData[currentQuestionIndex]}
+        handleAnswer={handleAnswer}
+        hideAnswerButtons={hideAnswerButtons}
+      />
+      </div>
       {/* Power-Up Controls */}
       <PowerUpControls score={score} />
 
-      {/* Car Animation Section */}
-      <CarAnimation
-  car1Position={car1Position}
-  car2Position={car2Position}
-  isAnswerCorrect={message.includes("Correct")}
-  // // hideAnswerButtons={hideAnswerButtons}  // Pass hideAnswerButtons
-  // showNextButton={showNextButton}        // Pass showNextButton
-  // onNextQuestion={handleNextQuestion}    // Pass onNextQuestion
-/>
-
+      {/* Car Animation  */}
+      <div className="fixed bottom-20 w-full">
+        <CarAnimation
+          car1Position={car1Position}
+          car2Position={car2Position}
+          isAnswerCorrect={isAnswerCorrect}
+          showBubble={showBubble}
+        />
+      </div>
 
       {/* Message Section */}
       {message && (
@@ -120,10 +87,11 @@ const GameView: React.FC = () => {
           {message}
         </p>
       )}
-            {showNextButton && (
+
+      {showNextButton && (
         <button
           onClick={handleNextQuestion}
-          className="bg-[#E7EF05] text-white text-xl px-6 py-2 rounded-lg -translate-y-48 shadow-md shadow-gray-600 mt-4 Akshar-medium"
+          className="bg-[#E7EF05] text-3xl font-akshar font-medium text-white px-11 py-2 rounded-full shadow-md shadow-gray-800 mt-4 Akshar-medium translate-y-[-130px]"
         >
           Next
         </button>
