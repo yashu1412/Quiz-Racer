@@ -12,11 +12,12 @@ interface GameOverViewProps {
 
 const GameOverView: React.FC<GameOverViewProps> = ({ isScoreVisible, score, correctAnswers, wrongAnswers }) => {
   const location = useLocation();
-  const { score: locationScore = 0, correctAnswers: locationCorrectAnswers = 0, wrongAnswers: locationWrongAnswers = 0 } = location.state || {};
+  
+  console.log('GameOverView Props:', { isScoreVisible, score, correctAnswers, wrongAnswers });
 
   return (
     <div>
-     <PowerUp score={score} />
+      {isScoreVisible && <PowerUp score={score} />}
       <div className="flex flex-col items-center justify-center flex-grow h-screen bg-common">
         {/* Game Over Image */}
         <img
